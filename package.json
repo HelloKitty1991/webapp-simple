@@ -1,0 +1,26 @@
+{
+  "name": "webapp-simple",
+  "version": "1.0.0",
+  "description": "a simple scaffold for simple H5 project",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config webpack.dev.config",
+    "dev": "npm run start",
+    "build": "webpack --config webpack.prod.config",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "H5",
+    "scaffold",
+    "simple"
+  ],
+  "author": "penganhua@klicen.com",
+  "license": "ISC",
+  "devDependencies": {
+    "html-webpack-plugin": "^4.5.0",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^5.1.4"
+  }
+}
