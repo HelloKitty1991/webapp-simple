@@ -41,13 +41,22 @@ const getStyleLoaders = (cssOptions, preProcessor, env) => {
             options: {
                 postcssOptions: {
                     ident: 'postcss',
-                    plugins: () => [
+                    plugins: [
                         require('postcss-flexbugs-fixes'),
                         require('postcss-preset-env')({
-                            autoprefixer: {
-                                flexbox: 'no-2009',
-                            },
+                            autoprefixer: true,
                             stage: 3,
+                        }),
+                        require('postcss-px-to-viewport')({
+                            viewportWidth: 375,  
+                            unitPrecision: 5, 
+                            viewportUnit: 'vw', 
+                            selectorBlackList: [], 
+                            exclude: [], 
+                            minPixelVaule: 1, 
+                            mediaQuery: false,
+                            landscape: false,
+                            landscapeUnit: "vw",
                         }),
                         postcssNormalize(),
                     ],
