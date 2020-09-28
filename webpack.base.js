@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer') ;
 
 const postcssNormalize = require('postcss-normalize');
 
@@ -93,6 +94,27 @@ module.exports = env => {
             filename: `[name]/index.js`,
             path: path.join(__dirname, 'dist')
         },
+        optimization: isEnvProduction ? {
+            splitChunks: {  
+                cacheGroups: {
+                    commons: {   
+                        name: "commons",
+                        chunks: "initial", 
+                        minSize:0, 
+                        minChunks:2,
+                        priority: 1
+                    },
+                    vendors: { 
+                        name: "vendors",
+                        test: /node_modules/,
+                        chunks: "all", 
+                        minSize:0,
+                        minChunks:1,
+                        priority: 2
+                    },
+                }
+            }
+        } : undefined,
         module: {
             rules: [
                 { parser: { requireEnsure: false } },
@@ -138,7 +160,9 @@ module.exports = env => {
             ],
         },
         plugins: [
-            ...htmlWebpackPlugins
+            ...htmlWebpackPlugins,
+            new MiniCssExtractPlugin(),
+            new BundleAnalyzerPlugin()
         ]
     }
 }
