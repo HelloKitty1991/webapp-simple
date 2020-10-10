@@ -14,7 +14,7 @@
     "scaffold",
     "simple"
   ],
-  "author": "penganhua@klicen.com",
+  "author": "penganhua@hotmail.com",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.11.6",
@@ -53,6 +53,5 @@
     ]
   },
   "dependencies": {
-    "@klicen/utils": "^1.1.2"
   }
 }
